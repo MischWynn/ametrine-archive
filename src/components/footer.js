@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer bg-slate-700 text-base-content p-10 rounded">
+    <footer className="footer bg-gray-800 text-base-content p-10 rounded">
       <nav className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6 font text-yellow-50">
         <a className="link link-hover">Introduction</a>
         <a className="link link-hover">Catalogue</a>

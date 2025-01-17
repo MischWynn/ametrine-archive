@@ -1,21 +1,19 @@
 import React from "react";
-import GemRing1 from "../assets/gemstone-ring2.jpg";
-import Earring1 from "../assets/earrings-2.jpg";
+import { Link } from "react-router-dom"; // Tambahkan impor ini
 import Necklace1 from "../assets/necklace-1.jpg";
-import CoupleRing1 from "../assets/couplering-1.jpg";
-import card1 from "../assets/bar-bracelet.png";
-import card2 from "../assets/bar-stern.png";
+import Necklace2 from "../assets/necklace-2.jpg";
+import Necklace3 from "../assets/necklace-4.jpg";
+import Necklace4 from "../assets/necklace-5.jpg";
 
-// Data produk
 const products = [
   {
-    label: "HOT",
+    label: "",
     image: {
-      src: GemRing1,
-      alt: "Gemstone Ring",
+      src: Necklace2,
+      alt: "Snow Necklace",
     },
-    name: "Green Gemstone Ring",
-    price: "Rp. 8.000.000",
+    name: "Winter Snow Necklace",
+    price: "Rp. 3.000.000",
     oldPrice: null,
     rating: 5,
     button: "PRE-ORDER NOW",
@@ -23,22 +21,22 @@ const products = [
   {
     label: "SALE",
     image: {
-      src: Earring1,
-      alt: "Earrings",
+      src: Necklace3,
+      alt: "Tide Necklace",
     },
-    name: "Elegant Earrings",
+    name: "Wave Blue Necklace",
     price: "Rp. 6.000.000",
     oldPrice: "Rp. 10.000.000",
-    rating: 4,
+    rating: 5,
     button: "PRE-ORDER NOW",
   },
   {
     label: "",
     image: {
       src: Necklace1,
-      alt: "Necklace",
+      alt: "Necklace-Stars-and-Moon-Series",
     },
-    name: "Golden Necklace",
+    name: "Blue Moons Necklace",
     price: "Rp. 4.000.000",
     oldPrice: "Rp. 6.000.000",
     rating: 4,
@@ -47,52 +45,37 @@ const products = [
   {
     label: "NEW",
     image: {
-      src: CoupleRing1,
-      alt: "PRE-ORDER NOW",
+      src: Necklace4,
+      alt: "Necklace-Stars-and-Moon-Series",
     },
-    name: "Couple Ring Set",
-    price: "Rp. 12.000.000",
+    name: "Steorra Gold Necklace",
+    price: "Rp. 8.000.000",
     oldPrice: null,
     rating: 5,
     button: "PRE-ORDER NOW",
   },
 ];
 
-const ProductGrid = () => {
+const NecklaceGrid = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="flex flex-wrap w-full space-x-4 mb-64">
-        {/* Card 1 */}
-        <div className="card bg-base-300 rounded-box grid h-20 flex-grow place-items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-6">
-          <img
-            src={card1}
-            alt="Image"
-            className="w-full h-auto rounded-t-lg"
-          />
-        </div>
-
-        {/* Card 2 */}
-        <div className="card bg-base-300 rounded-box grid h-20 flex-grow place-items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-6">
-          <img
-            src={card2}
-            alt="Image"
-            className="w-full h-auto rounded-t-lg"
-          />
-        </div>
-      </div>
-
-      <div className="mt-24 mb-8">
+      <div className="flex justify-between items-center mb-4">
         {/* Title */}
-        <h1 className="text-xl sm:text-xl lg:text-3xl font-bold mb-4 text-center">
-          Our Product
+        <h1 className="text-xl sm:text-xl lg:text-3xl font-bold">
+          Necklaces
         </h1>
-        <p className="text-base sm:text-lg lg:text-lg mb-8 text-center italic">
-          Jewelry Collection by Ametrines
-        </p>
+
+        {/* See All */}
+        <Link
+          to="/catalog/necklace"
+          className="text-blue-500 hover:underline text-sm sm:text-base"
+        >
+          See All
+        </Link>
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
           <div
             key={index}
@@ -138,4 +121,4 @@ const ProductGrid = () => {
   );
 };
 
-export default ProductGrid;
+export default NecklaceGrid;

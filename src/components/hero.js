@@ -36,21 +36,6 @@ const HomePage = () => {
             Jewelry Collection by Ametrines
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-4 py-2 sm:px-6 sm:py-3 border border-white rounded hover:bg-white hover:text-gray-900 transition">
-              INTRO
-            </button>
-            <button className="px-4 py-2 sm:px-6 sm:py-3 border border-white rounded hover:bg-white hover:text-gray-900 transition">
-              WORK
-            </button>
-            <button className="px-4 py-2 sm:px-6 sm:py-3 border border-white rounded hover:bg-white hover:text-gray-900 transition">
-              ABOUT
-            </button>
-            <button className="px-4 py-2 sm:px-6 sm:py-3 border border-white rounded hover:bg-white hover:text-gray-900 transition">
-              CONTACT
-            </button>
-          </div>
         </div>
       </div>
     </div>
