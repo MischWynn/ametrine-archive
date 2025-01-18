@@ -7,7 +7,10 @@ import NecklaceGrid from './components/catNecklace';
 import CatalogPage from './components/CP_Necklace';
 import Card from './components/card';
 import RingGrid from './components/catRing';
-import CatalogRing from './components/CP_Ring'; // import CatalogRing
+import CatalogRing from './components/CP_Ring';
+import EarringGrid from './components/catEarring';
+import CatalogEarring from './components/CP_Earring';
+import CatStern from './components/catstern';
 
 function App() {
   return (
@@ -18,13 +21,16 @@ function App() {
 
         {/* Halaman utama */}
         <Routes>
-          <Route path="/" element={<><Hero /><Card /><NecklaceGrid /><RingGrid/></>} />
+          <Route path="/" element={<><Hero /><Card /><NecklaceGrid /><RingGrid /><EarringGrid /><CatStern/></>} />
           
           {/* Halaman katalog */}
           <Route path="/catalog/necklace" element={<CatalogPage />} />
           
           {/* Halaman katalog Ring */}
-          <Route path="/catalog/ring" element={<CatalogRing />} /> {/* Tambahkan rute ini */}
+          <Route path="/catalog/ring" element={<CatalogRing />} />
+          
+          {/* Halaman katalog Earring */}
+          <Route path="/catalog/earring" element={<CatalogEarring />} />
         </Routes>
 
         {/* Footer tetap muncul di setiap halaman */}

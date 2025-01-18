@@ -179,46 +179,10 @@ const ringData = [
     rating: 5,
     button: "PRE-ORDER NOW",
   },
+
+  
 ];
 
-const sternData = [
-  {
-    label: "",
-    image: {
-      src: Ring10,
-      alt: "Necklace-Stars-and-Moon-Series",
-    },
-    name: "Blue Moons Necklace",
-    price: "Rp. 4.000.000",
-    oldPrice: "Rp. 6.000.000",
-    rating: 4,
-    button: "PRE-ORDER NOW",
-  },
-  {
-    label: "NEW",
-    image: {
-      src: Ring11,
-      alt: "Necklace-Stars-and-Moon-Series",
-    },
-    name: "Steorra Gold Necklace",
-    price: "Rp. 8.000.000",
-    oldPrice: null,
-    rating: null,
-    button: "PRE-ORDER NOW",
-  },
-  {
-    label: "HOT",
-    image: {
-      src: Ring12,
-      alt: "Necklace-Stars-and-Moon-Series",
-    },
-    name: "Steorra Saturn Necklace",
-    price: "Rp. 8.000.000",
-    oldPrice: null,
-    rating: 5,
-    button: "PRE-ORDER NOW",
-  },
-];
 
 const gemstoneRing = [
   {

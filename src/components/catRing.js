@@ -4,15 +4,6 @@ import Ring1 from "../assets/rings-1.jpg";
 import Ring2 from "../assets/rings-2.jpg";
 import Ring3 from "../assets/rings-3.jpg";
 import Ring4 from "../assets/rings-4.jpg";
-import Ring5 from "../assets/rings-5.jpg";
-import Ring6 from "../assets/ring-bird.jpg";
-import Ring7 from "../assets/gemstone-ring.jpg";
-import Ring8 from "../assets/gemstone-ring2.jpg";
-import Ring9 from "../assets/gemstone-ring3.jpg";
-import Ring10 from "../assets/gemstone-ring4.jpg";
-import Ring11 from "../assets/gemstone-ring5.jpg";
-import Ring12 from "../assets/gemstone-ring6.jpg";
-import Ring13 from "../assets/gemstone-ring7.jpg";
 
 const ring = [
     {
@@ -64,7 +55,7 @@ const ring = [
       button: "PRE-ORDER NOW",
     },
   ];
-const NecklaceGrid = () => {
+const RingGrid = () => {
     return (
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex justify-between items-center mb-4">
@@ -129,5 +120,5 @@ const NecklaceGrid = () => {
     );
   };
   
-  export default NecklaceGrid;
+  export default RingGrid;
   
