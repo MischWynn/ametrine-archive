@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GemRing1 from "../assets/gemstone-ring2.jpg";
 import Earring1 from "../assets/earrings-2.jpg";
 import Necklace1 from "../assets/necklace-1.jpg";
@@ -10,7 +10,7 @@ import card2 from "../assets/bar-stern.png";
 const products = [
   {
     label: "HOT",
-    image: {
+    img: {
       src: GemRing1,
       alt: "Gemstone Ring",
     },
@@ -22,7 +22,7 @@ const products = [
   },
   {
     label: "SALE",
-    image: {
+    img: {
       src: Earring1,
       alt: "Earrings",
     },
@@ -34,7 +34,7 @@ const products = [
   },
   {
     label: "",
-    image: {
+    img: {
       src: Necklace1,
       alt: "Necklace",
     },
@@ -46,7 +46,7 @@ const products = [
   },
   {
     label: "NEW",
-    image: {
+    img: {
       src: CoupleRing1,
       alt: "PRE-ORDER NOW",
     },
@@ -59,25 +59,39 @@ const products = [
 ];
 
 const ProductGrid = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleOpenModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSubmitOrder = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name");
+    const email = formData.get("email");
+
+    console.log(name, email);
+    handleCloseModal();
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-wrap w-full space-x-4 mb-64">
         {/* Card 1 */}
         <div className="card bg-base-300 rounded-box grid h-20 flex-grow place-items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-6">
-          <img
-            src={card1}
-            alt="Image"
-            className="w-full h-auto rounded-t-lg"
-          />
+          <img src={card1} alt="img" className="w-full h-auto rounded-t-lg" />
         </div>
 
         {/* Card 2 */}
         <div className="card bg-base-300 rounded-box grid h-20 flex-grow place-items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4 mb-6">
-          <img
-            src={card2}
-            alt="Image"
-            className="w-full h-auto rounded-t-lg"
-          />
+          <img src={card2} alt="img" className="w-full h-auto rounded-t-lg" />
         </div>
       </div>
 
@@ -105,8 +119,8 @@ const ProductGrid = () => {
             )}
             <div className="w-full h-48 overflow-hidden rounded-lg mb-4">
               <img
-                src={product.image.src}
-                alt={product.image.alt}
+                src={product.img.src}
+                alt={product.img.alt}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -127,13 +141,68 @@ const ProductGrid = () => {
               {"★".repeat(product.rating)}
             </div>
             {product.button && (
-              <button className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700">
+              <button
+                className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700"
+                onClick={() => handleOpenModal(product)}
+              >
                 {product.button}
               </button>
             )}
           </div>
         ))}
       </div>
+
+      {isModalOpen && selectedProduct && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          style={{ zIndex: 1000 }} // Tambahkan z-index di sini
+        >
+          <div className="bg-white rounded-lg p-6 max-w-sm w-full">
+            <h2 className="text-lg font-bold mb-4">Order Summary</h2>
+            <div className="mb-4">
+              <h3 className="font-medium">{selectedProduct.name}</h3>
+              <p className="text-gray-700">{selectedProduct.price}</p>
+            </div>
+            <form onSubmit={handleSubmitOrder}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="w-full border rounded p-2"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="w-full border rounded p-2"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div className="flex justify-end space-x-2">
+                <button
+                  type="button"
+                  onClick={handleCloseModal}
+                  className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700"
+                >
+                  Confirm Order
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import earring1 from "../assets/earrings-1.jpg";
 import earring2 from "../assets/earrings-2.jpg";
@@ -12,7 +12,7 @@ const earring = [
       src: earring1,
       alt: "Earring",
     },
-    name: "Simple Earring",
+    name: "Stern Dusk Earring",
     price: "Rp. 2.000.000",
     oldPrice: null,
     rating: 5,
@@ -24,7 +24,7 @@ const earring = [
       src: earring2,
       alt: "Earring",
     },
-    name: "Wave Earring",
+    name: "Crystal Ice Earring",
     price: "Rp. 3.000.000",
     oldPrice: "Rp. 5.000.000",
     rating: 4,
@@ -36,7 +36,7 @@ const earring = [
       src: earring3,
       alt: "Earring",
     },
-    name: "Bird Earring",
+    name: "Snou Earring",
     price: "Rp. 4.000.000",
     oldPrice: null,
     rating: 5,
@@ -56,14 +56,34 @@ const earring = [
   },
 ];
 
-const catEarring = () => {
+const CatEarring = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlePreOrderClick = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    setIsModalOpen(false);
+  };
+
+  const handleSubmitOrder = (e) => {
+    e.preventDefault();
+    console.log("Order submitted:", {
+      product: selectedProduct,
+      name: e.target.name.value,
+      email: e.target.email.value,
+    });
+    handleCloseModal();
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex justify-between items-center mb-4">
-        {/* Title */}
         <h1 className="text-xl sm:text-xl lg:text-3xl font-bold">Earrings</h1>
-
-        {/* See All */}
         <Link
           to="/catalog/earring"
           className="text-blue-500 hover:underline text-sm sm:text-base"
@@ -72,7 +92,6 @@ const catEarring = () => {
         </Link>
       </div>
 
-      {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {earring.map((product, index) => (
           <div
@@ -108,15 +127,71 @@ const catEarring = () => {
               {"★".repeat(product.rating)}
             </div>
             {product.button && (
-              <button className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700">
+              <button
+                onClick={() => handlePreOrderClick(product)}
+                className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700"
+              >
                 {product.button}
               </button>
             )}
           </div>
         ))}
       </div>
+
+      {isModalOpen && selectedProduct && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          style={{ zIndex: 1000 }}
+        >
+          <div className="bg-white rounded-lg p-6 max-w-sm w-full">
+            <h2 className="text-lg font-bold mb-4">Order Summary</h2>
+            <div className="mb-4">
+              <h3 className="font-medium">{selectedProduct.name}</h3>
+              <p className="text-gray-700">{selectedProduct.price}</p>
+            </div>
+            <form onSubmit={handleSubmitOrder}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="w-full border rounded p-2"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="w-full border rounded p-2"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div className="flex justify-end space-x-2">
+                <button
+                  type="button"
+                  onClick={handleCloseModal}
+                  className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-700"
+                >
+                  Confirm Order
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default catEarring;
+export default CatEarring;
+

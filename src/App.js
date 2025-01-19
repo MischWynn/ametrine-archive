@@ -11,6 +11,7 @@ import CatalogRing from './components/CP_Ring';
 import EarringGrid from './components/catEarring';
 import CatalogEarring from './components/CP_Earring';
 import CatStern from './components/catstern';
+import Phantalassa from './components/catwaves';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
 
         {/* Halaman utama */}
         <Routes>
-          <Route path="/" element={<><Hero /><Card /><NecklaceGrid /><RingGrid /><EarringGrid /><CatStern/></>} />
+          <Route path="/" element={<><Hero /><Card /><NecklaceGrid /><RingGrid /><EarringGrid /><CatStern/><Phantalassa/></>} />
           
           {/* Halaman katalog */}
           <Route path="/catalog/necklace" element={<CatalogPage />} />

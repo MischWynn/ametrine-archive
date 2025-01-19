@@ -49,22 +49,16 @@ const Navbar = () => {
             Necklace
           </a>
           <a
-            href="/ring"
+            href="/catalog/ring"
             className="text-gray-800 hover:text-gray-900 text-lg font-bold"
           >
             Ring
           </a>
           <a
-            href="/earring"
+            href="/catalog/earring"
             className="text-gray-800 hover:text-gray-900 text-lg font-bold"
           >
             Earring
-          </a>
-          <a
-            href="/couple-ring"
-            className="text-gray-800 hover:text-gray-900 text-lg font-bold"
-          >
-            Couple Ring
           </a>
         </div>
       </div>
@@ -92,19 +86,13 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="/earring"
+              href="/catalog/earring"
               className="text-gray-800 hover:text-gray-900 text-lg font-bold"
             >
               Earring
             </a>
           </li>
           <li>
-            <a
-              href="/couple-ring"
-              className="text-gray-800 hover:text-gray-900 text-lg font-bold"
-            >
-              Couple Ring
-            </a>
           </li>
         </ul>
       </div>
